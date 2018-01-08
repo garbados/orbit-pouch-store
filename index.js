@@ -1,7 +1,8 @@
 'use strict'
 
-const PouchDB = require('pouchdb')
 const OrbitDocStore = require('orbit-db-docstore')
+const PouchDB = require('pouchdb')
+PouchDB.plugin(require('pouchdb-find'))
 
 class PouchIndex {
   constructor (id) {
@@ -50,6 +51,14 @@ class PouchIndex {
     let result = await this._index.find(query)
     return result.docs
   }
+
+  async query (query, options = {}) {
+    options.include_docs = true
+    let result = await this._index.query(query, options)
+    return result.rows.map((row) => {
+      return row.doc
+    })
+  }
 }
 
 module.exports = class CubeSat extends OrbitDocStore {
@@ -64,8 +73,12 @@ module.exports = class CubeSat extends OrbitDocStore {
     return this._index.get()
   }
 
-  async query (query) {
+  async find (query) {
     await this._index.find(query)
+  }
+
+  async query (query, options) {
+    await this._index.query(query, options)
   }
 
   async get (id) {
@@ -78,6 +91,19 @@ module.exports = class CubeSat extends OrbitDocStore {
 
   static get Index () {
     return PouchIndex
+  }
+
+  async _addOperation (data, batchOperation, lastOption, onProgressCallback) {
+    try {
+      let doc = await this._index.get(data.key)
+      if (doc) {
+        data.value._rev = doc._rev
+      }
+    } catch (e) {
+      // TODO handle? maybe?
+      console.log(e)
+    }
+    await super._addOperation(data, batchOperation, lastOption, onProgressCallback)
   }
 
   static async create (orbit, address, options = {}) {

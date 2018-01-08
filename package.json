@@ -1,13 +1,13 @@
 {
-  "name": "cubesat",
+  "name": "@garbados/cubesat",
   "version": "1.0.0-alpha",
   "description": "An OrbitDB docstore that uses PouchDB for indexing.",
   "main": "index.js",
   "scripts": {
     "test": "standard && dependency-check . --unused --no-dev && node test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Diana Thayer <garbados@gmail.com>",
+  "license": "Apache-2.0",
   "devDependencies": {
     "dependency-check": "^2.9.2",
     "orbit-db": "^0.19.2",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "orbit-db-docstore": "^1.2.0",
-    "pouchdb": "^6.4.1"
+    "pouchdb": "^6.4.1",
+    "pouchdb-find": "^6.4.1"
   }
 }
