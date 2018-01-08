@@ -1,14 +1,23 @@
-const assert = require('assert')
 const CubeSat = require('.')
 const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
+const tap = require('tap')
 
-let ipfs = new IPFS({ EXPERIMENTAL: { pubsub: true } })
-ipfs.on('ready', async (t) => {
+let ipfs = new IPFS({
+  start: false,
+  EXPERIMENTAL: { pubsub: true }
+})
+ipfs.on('ready', async () => {
   let orbit = new OrbitDB(ipfs, 'test')
   let cube = await CubeSat.create(orbit, 'test')
-  assert(cube, 'Something went wrong?')
-  await orbit.stop()
+  await cube.load()
+  tap.ok(cube, 'cubesat ok')
+  let all = await cube.all()
+  tap.equal(all.length, 0, 'cubesat empty')
   await ipfs.stop()
-  process.exit(0)
+  await orbit.stop()
+  await cube.close()
+  await cube.drop()
+  tap.end()
+  process.exit(0) // FIXME: cannot report coverage this way
 })

@@ -10,9 +10,10 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "dependency-check": "^2.9.2",
+    "ipfs": "^0.27.6",
     "orbit-db": "^0.19.2",
     "standard": "^10.0.3",
-    "ipfs": "^0.27.6"
+    "tap": "^11.0.1"
   },
   "dependencies": {
     "orbit-db-docstore": "^1.2.0",
