@@ -1,7 +1,7 @@
 # CubeSat
 
 [![stability](https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square)](https://nodejs.org/api/documentation.html#documentation_stability_index)
-<!-- [![npm version](https://img.shields.io/npm/v/@garbados/cubesat.svg?style=flat-square)](https://www.npmjs.com/package/cubesat) -->
+[![npm version](https://img.shields.io/npm/v/@garbados/cubesat.svg?style=flat-square)](https://www.npmjs.com/package/cubesat)
 <!-- [![build status](https://img.shields.io/travis/garbados/cubesat/master.svg?style=flat-square)](https://travis-ci.org/garbados/cubesat) -->
 <!-- [![test coverage](https://img.shields.io/coveralls/github/garbados/cubesat/master.svg?style=flat-square)](https://coveralls.io/github/garbados/cubesat) -->
 <!-- [![greenkeeper](https://badges.greenkeeper.io/garbados/cubesat.svg)](https://greenkeeper.io/) -->
