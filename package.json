@@ -1,5 +1,5 @@
 {
-  "name": "@garbados/cubesat",
+  "name": "orbit-pouch-store",
   "version": "1.0.0-alpha",
   "description": "An OrbitDB docstore that uses PouchDB for indexing.",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "dependency-check": "^2.9.2",
+    "documentation": "^5.3.5",
     "ipfs": "^0.27.6",
     "orbit-db": "^0.19.2",
     "standard": "^10.0.3",
