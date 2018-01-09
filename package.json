@@ -4,6 +4,7 @@
   "description": "An OrbitDB docstore that uses PouchDB for indexing.",
   "main": "index.js",
   "scripts": {
+    "docs": "documentation readme index.js --section=Usage",
     "test": "standard && dependency-check . --unused --no-dev && node test.js"
   },
   "author": "Diana Thayer <garbados@gmail.com>",
